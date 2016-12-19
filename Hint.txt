@@ -1,0 +1,43 @@
+
+
+
+
+Challenge 1: 
+
+Add bar on top of picker view with buttons & label as follows
+
+Hint: 
+
+see my close keyboard tutorial below
+
+http://blog.apoorvmote.com/closehide-keyboard-after-typing-in-textfield/
+
+
+
+
+
+
+Challenge 2 : 
+
+Show two columns in uipickerview & update textfield from strings of each column
+
+Hint: 
+
+see my pickerview tutorial below
+
+http://blog.apoorvmote.com/update-label-with-uipickerview-value/
+
+
+
+
+
+
+
+
+Challenge 3: 
+
+Create multiple textfield with different pickerview for each textfield 
+
+Hint: 
+
+Use different tag for every pickerview
