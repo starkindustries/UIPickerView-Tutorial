@@ -8,18 +8,31 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-
+class ViewController: UIViewController, CustomPickerCallback {
+    
     @IBOutlet weak var pickerTextField: UITextField!
     
     var pickOption = ["one", "two", "three", "seven", "fifteen"]
     
+    lazy var pickerDelegate: CustomPickerDelegate = {
+        let pickerDelegate = CustomPickerDelegate()
+        pickerDelegate.callback = self
+        return pickerDelegate
+    }()
+    
+    lazy var pickerView: UIPickerView = {
+        let picker = UIPickerView()
+        picker.delegate = pickerDelegate
+        picker.backgroundColor = UIColor.blue 
+        return picker
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let pickerView = UIPickerView()
-        
-        pickerView.delegate = self
+//        let pickerView = UIPickerView()
+//        pickerView.backgroundColor = UIColor.red
+//        pickerView.delegate = self
         
         pickerTextField.inputView = pickerView
         
@@ -30,22 +43,25 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    /*
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickOption.count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickOption[row]
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickerTextField.text = pickOption[row]
-    }
+    }*/
 
+    func pickerDidSelectRow(_ string: String?) {
+        pickerTextField.text = string
+    }
 }
 
